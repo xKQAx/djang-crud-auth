@@ -1,23 +1,15 @@
-{% extends 'base.html' %} 
-{% load static %}
+{% extends 'base.html' %}
+
 {% block content %}
+<div class="container center" style="margin-top: 100px;">
+    <h3>Registrarse</h3>
+    <form action="{% url 'signup' %}" method="POST"> 
+        {% csrf_token %}
+        {{ form.as_p }}
 
-<link rel="stylesheet" href="{% static 'css/singup.css' %}">
-
-<div class="container">
-  <div class="form-box">
-    <h1>Registro</h1>
-
-    {% if error %}
-      <p class="error">{{ error }}</p>
-    {% endif %}
-
-    <form action="/signup/" method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button class="btn">Registrarse</button>
+        <button type="submit" class="btn waves-effect waves-light deep-purple lighten-1 btn-large oval-button">
+            Sign Up
+        </button>
     </form>
-  </div>
 </div>
-
 {% endblock %}

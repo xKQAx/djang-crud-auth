@@ -1,53 +1,49 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %} Generos | MovieHub {% endblock %}
 
 {% block content %}
-<div class="container-fluid d-flex">
-    <!-- Sidebar -->
-    <aside class="sidebar p-4 text-white">
-        <div class="d-flex align-items-center mb-4">
-            <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="User">
-            <span>Tu Nombre</span>
-        </div>
-        <h2 class="fw-bold">Selecciona tus</h2>
-        <h2 class="fw-bold"><span class="text-gradient">Géneros</span></h2>
-        <h2 class="fw-bold">Favoritos</h2>
-    </aside>
+<div class="containerBox">
 
-    <!-- Contenido Principal -->
-    <div class="content p-5 flex-grow-1">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Ciencia Ficción">
-                    <div class="card-body">
-                        <h5 class="card-title">Ciencia Ficción</h5>
-                        <p class="card-text">Explora conceptos científicos avanzados y mundos futuristas.</p>
-                    </div>
+    <div class="info-section">
+        <h3>Selecciona cúal</h3>
+            <div class="titleText"><h2> género</h2></div>
+        <h3>estás buscando</h3>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://es.web.img3.acsta.net/pictures/16/02/04/15/49/599815.jpg" alt="Pelicula 1">
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Terror">
-                    <div class="card-body">
-                        <h5 class="card-title">Terror</h5>
-                        <p class="card-text">Busca generar miedo e inquietud en el espectador.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Comedia">
-                    <div class="card-body">
-                        <h5 class="card-title">Comedia</h5>
-                        <p class="card-text">Su objetivo principal es hacer reír mediante situaciones graciosas.</p>
-                    </div>
+                <div class="card-content">
+                    <span class="card-title">Romance</span>
+                    <p>Relatos que giran en torno al amor y las emociones, mostrando conexiones profundas entre personajes y sus desafíos sentimentales.</p>
                 </div>
             </div>
         </div>
-
-        <!-- Botón Continuar -->
-        <div class="text-center mt-4">
-            <button class="btn btn-dark px-4">Continuar →</button>
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://pics.filmaffinity.com/Expediente_Warren_The_Conjuring-153245956-large.jpg" alt="Pelicula 2">
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Terror</span>
+                    <p>Narrativas diseñadas para causar miedo y suspenso, con elementos sobrenaturales, monstruos o situaciones perturbadoras.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://cineuropa.org/Galleries/280/433/poster01_en_big.jpg?1415976789133" alt="Pelicula 2">
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Ciencia ficción</span>
+                    <p>Historias que exploran el futuro, la tecnología, el espacio y lo desconocido, combinando imaginación con ciencia.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

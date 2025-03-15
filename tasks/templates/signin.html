@@ -1,19 +1,22 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
-
-<h1>Signin</h1>
-
-<p>
-{{error}}
-</p>
-
-<form action="/signin/" method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
-  <button>
-    Signin
-  </button>
-</form>
-
+<div class="container center" style="margin-top: 100px;">
+    <h3>Iniciar sesión</h3>
+    
+    {% if error %}
+        <p class="red-text">{{ error }}</p>
+    {% endif %}
+    
+    <form action="{% url 'signin' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn waves-effect waves-light deep-purple lighten-1 btn-large oval-button">
+            Iniciar sesión
+        </button>
+    </form>
+    
+    <p>¿No tienes cuenta? <a href="{% url 'signup' %}">Regístrate aquí</a></p>
+</div>
 {% endblock %}

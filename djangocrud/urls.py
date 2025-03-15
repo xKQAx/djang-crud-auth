@@ -23,6 +23,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.contrib.auth.views import LoginView
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
@@ -35,6 +37,10 @@ urlpatterns = [
     path('tasks/<int:task_id>', views.task_detail, name='task_detail'),
     path('tasks/<int:task_id>/complete', views.complete_task, name='complete_task'),  
     path('tasks/<int:task_id>/delete', views.delete_task, name='delete_task'),
+
+    path('generos/', views.generos, name='generos'),
+    path('recomendaciones/', views.recomendaciones, name='recomendaciones'),
+    path('peliculasFavoritas/', views.peliculasFavoritas, name='peliculasFavoritas'),
 ]
 
 if settings.DEBUG:  # Solo en modo desarrollo

@@ -11,23 +11,22 @@ from .forms import TaskForm
 
 # Create your views here.
 
-
 def signup(request):
     if request.method == 'GET':
-        return render(request, 'signup.html', {"form": UserCreationForm})
+        form = UserCreationForm()
+        return render(request, 'signup.html', {"form": form})
     else:
-
-        if request.POST["password1"] == request.POST["password2"]:
-            try:
-                user = User.objects.create_user(
-                    request.POST["username"], password=request.POST["password1"])
-                user.save()
+        try:
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                user = form.save()
                 login(request, user)
                 return redirect('tasks')
-            except IntegrityError:
-                return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
-
-        return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
+            else:
+                return render(request, 'signup.html', {"form": form, "error": "Error en el registro. Revisa los datos ingresados."})
+        except Exception as e:
+            print(f"Error en el registro: {e}")  # Para depuración
+            return render(request, 'signup.html', {"form": UserCreationForm(), "error": f"Error inesperado: {e}"})
 
 
 @login_required
@@ -68,15 +67,20 @@ def signout(request):
 
 def signin(request):
     if request.method == 'GET':
-        return render(request, 'signin.html', {"form": AuthenticationForm})
+        form = AuthenticationForm()
+        return render(request, 'signin.html', {"form": form})
     else:
-        user = authenticate(
-            request, username=request.POST['username'], password=request.POST['password'])
-        if user is None:
-            return render(request, 'signin.html', {"form": AuthenticationForm, "error": "Username or password is incorrect."})
-
-        login(request, user)
-        return redirect('tasks')
+        try:
+            form = AuthenticationForm(data=request.POST)
+            if form.is_valid():
+                user = form.get_user()
+                login(request, user)
+                return redirect('tasks')
+            else:
+                return render(request, 'signin.html', {"form": form, "error": "Usuario o contraseña incorrectos."})
+        except Exception as e:
+            print(f"Error en el inicio de sesión: {e}")  # Para depuración
+            return render(request, 'signin.html', {"form": AuthenticationForm(), "error": f"Error inesperado: {e}"})
 
 @login_required
 def task_detail(request, task_id):
@@ -110,3 +114,18 @@ def delete_task(request, task_id):
     
 def seleccionar_generos(request):
     return render(request, 'generos.html')
+
+def generos (request):
+    
+    return render(request, 'generos.html')
+
+def recomendaciones (request):
+    
+    return render(request, 'recomendaciones.html')
+
+def peliculasFavoritas(request):
+    
+    return render(request, 'peliculasFavoritas.html')
+
+def home (request):
+    return render(request, 'home.html')

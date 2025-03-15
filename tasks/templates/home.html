@@ -1,7 +1,17 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
-<div class="container">
-  <h1>Home</h1>
+{% block content %}
+<div class="Container">
+    
+    <h3 class="titleText">🎥¡𝐁𝐢𝐞𝐧𝐯𝐞𝐧𝐢𝐝𝐨!🎬</h3>
+    <p>
+        Te recomendaremos películas según tus gustos.  
+        Únete y descubre nuevas historias que te encantarán.
+    </p>
+    <div class="row">
+        <a href="{% url 'signin' %}" class="btn waves-effect waves-light purple lighten-1 btn-large oval-button">Sign In</a>
+        <a href="{% url 'signup' %}" class="btn waves-effect waves-light deep-purple lighten-1 btn-large oval-button">Sign Up</a>
+    </div> 
 </div>
 
-{% endblock %}
+{% endblock %}
